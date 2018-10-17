@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://yoursite.com/images/java1.jpg">
 <meta property="og:image" content="http://yoursite.com/images/hadoop_v.jpg">
 <meta property="og:image" content="http://yoursite.com/images/wall.jpg">
-<meta property="og:updated_time" content="2018-09-26T08:23:31.424Z">
+<meta property="og:updated_time" content="2018-10-17T03:07:42.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hadoop集群搭建">
 <meta name="twitter:description" content="hadoop 集群搭建实验室当前hadoop集群节点如下：    主机名 用户名 IP 集群中的角色     master hadoop 10.13.61.122 NameNode、JobTracker   slave1 hadoop 10.13.61.125 DataNode、TaskTracker   slave2 hadoop 10.13.61.132 DataNode、TaskTracke">
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.8k
+                  2.9k
                 </span>
               
 
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  12
+                  13
                 </span>
               
             </div>
@@ -519,7 +519,9 @@
 <h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>如果配置成功，通过 <strong>ping</strong> 测试时，可以直接通过主机名而不需要ip地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ping master</span><br><span class="line">ping slave1</span><br><span class="line">ping 其他主机</span><br></pre></td></tr></table></figure></p>
 <p>成功时结果如下：<br><img src="/images/ping.jpg" alt=""><br>注：ping指令会一直执行，可以通过 <code>ctrl+C</code> 停止</p>
 <h3 id="2-配置SSH免密登录"><a href="#2-配置SSH免密登录" class="headerlink" title="2. 配置SSH免密登录"></a>2. 配置SSH免密登录</h3><p>由于hadoop集群中master主机需要调度各个slave，而这需要配置ssh远程登录服务。</p>
-<h4 id="安装ssh"><a href="#安装ssh" class="headerlink" title="安装ssh"></a>安装ssh</h4><p>如果终端中输入 <code>ssh</code>显示找不到命令，可以输入以下命令安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure></p>
+<h4 id="安装ssh"><a href="#安装ssh" class="headerlink" title="安装ssh"></a>安装ssh</h4><p>ubuntu 默认安装了ssh 客户端，没有安装服务端。运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -e|grep ssh</span><br></pre></td></tr></table></figure></p>
+<p>结果应该与下文类似：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop@ajm-zju:/home/ajm$ ps -e|grep ssh</span><br><span class="line"> 1444 ?        00:00:00 sshd</span><br></pre></td></tr></table></figure></p>
+<p>如果没有 <code>sshd</code> ，则说明没有安装ssh服务端，可以输入以下命令安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure></p>
 <h4 id="ssh登录其他主机"><a href="#ssh登录其他主机" class="headerlink" title="ssh登录其他主机"></a>ssh登录其他主机</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh master</span><br></pre></td></tr></table></figure>
 <p>出现身份警告时，输入yes并回车，需要输入密码时，请输入master主机的密码。<br>之后就登录了master主机，可以通过命令行操作maseter主机。<br><img src="/images/ssh.jpg" alt=""><br>注：退出登录使用<code>exit</code> 命令。</p>
 <h4 id="生成RSA公私钥对"><a href="#生成RSA公私钥对" class="headerlink" title="生成RSA公私钥对"></a>生成RSA公私钥对</h4><p>但是每次ssh登录都需要输入密码太麻烦，所以可以通过公私钥的方式免密登录，配置方法是 <strong>A主机将公钥加入到B主机的authorized_keys中</strong>, 则A可以免密登录B。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa # 一路回车</span><br><span class="line">cd ~/.ssh # 公私钥对保存在此目录</span><br><span class="line">ls # 查看目录中的文件列表</span><br></pre></td></tr></table></figure></p>
@@ -532,10 +534,10 @@
 <p><img src="/images/java.jpg" alt=""><br>出现上图结果则正确安装</p>
 <h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><p>在前面是通过<code>./java</code> 执行java可执行程序，但是为了执行这个程序，必须每次都切换到<code>/usr/java/jdk1.8.0_101/bin</code>目录下，为了能在任何目录下都能执行java的相关程序，需要配置环境变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/profile</span><br></pre></td></tr></table></figure></p>
 <p>在/etc/profile文件末尾添加如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/java/jdk1.8.0_101</span><br><span class="line">export JRE_HOME=/usr/java/jdk1.8.0_101/jre</span><br><span class="line">export CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br></pre></td></tr></table></figure></p>
-<p>保存后退出。通过<code>source</code>命令使得上面的修改生效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo source /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p>保存后退出。通过<code>source</code>命令使得上面的修改生效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure></p>
 <p>输入以下命令测试是否成功配置环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure></p>
 <p><img src="/images/java1.jpg" alt=""><br>出现以上结果则成功配置。</p>
-<h2 id="二、Hadoop安装"><a href="#二、Hadoop安装" class="headerlink" title="二、Hadoop安装"></a>二、Hadoop安装</h2><h3 id="1-安装及环境变量配置"><a href="#1-安装及环境变量配置" class="headerlink" title="1. 安装及环境变量配置"></a>1. 安装及环境变量配置</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>将hadoop-2.6.0.tar.gz解压到目录/opt<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf hadoop-2.6.0.tar.gz -C /opt</span><br></pre></td></tr></table></figure></p>
+<h2 id="二、Hadoop安装"><a href="#二、Hadoop安装" class="headerlink" title="二、Hadoop安装"></a>二、Hadoop安装</h2><h3 id="1-安装及环境变量配置"><a href="#1-安装及环境变量配置" class="headerlink" title="1. 安装及环境变量配置"></a>1. 安装及环境变量配置</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>将hadoop-2.6.0.tar.gz解压到目录/opt<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf hadoop-2.6.0.tar.gz -C /opt # 解压到/opt</span><br><span class="line">cd /opt      # 切到含有hadoop-2.6.0的目录下</span><br><span class="line">sudo chown -R hadoop:hadoop ./hadoop-2.6.0       # 修改文件权限</span><br></pre></td></tr></table></figure></p>
 <h4 id="配置环境变量-1"><a href="#配置环境变量-1" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><p>与java配置环境变量相同，在/etc/profile中追加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export HADOOP_HOME=/opt/hadoop-2.6.0</span><br><span class="line">export HADOOP_LIB_NATIVE=$HADOOP_HOME/lib/native</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/bin</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/sbin</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/lib</span><br></pre></td></tr></table></figure></p>
 <p>保存后退出。通过<code>source</code>命令使得上面的修改生效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo source /etc/profile</span><br></pre></td></tr></table></figure></p>
 <p>输入以下命令测试是否成功配置环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop version</span><br></pre></td></tr></table></figure></p>
@@ -810,7 +812,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">2.8k</span>
+    <span title="Site words total count">2.9k</span>
   
 </div>
 
@@ -843,7 +845,7 @@ var jiathis_config={
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">2.8k</span> 字
+      博客全站共： <span class="post-count">2.9k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
