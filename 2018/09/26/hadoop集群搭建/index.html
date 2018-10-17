@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://yoursite.com/images/java1.jpg">
 <meta property="og:image" content="http://yoursite.com/images/hadoop_v.jpg">
 <meta property="og:image" content="http://yoursite.com/images/wall.jpg">
-<meta property="og:updated_time" content="2018-10-17T03:07:42.696Z">
+<meta property="og:updated_time" content="2018-10-17T03:13:53.668Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hadoop集群搭建">
 <meta name="twitter:description" content="hadoop 集群搭建实验室当前hadoop集群节点如下：    主机名 用户名 IP 集群中的角色     master hadoop 10.13.61.122 NameNode、JobTracker   slave1 hadoop 10.13.61.125 DataNode、TaskTracker   slave2 hadoop 10.13.61.132 DataNode、TaskTracke">
@@ -539,7 +539,7 @@
 <p><img src="/images/java1.jpg" alt=""><br>出现以上结果则成功配置。</p>
 <h2 id="二、Hadoop安装"><a href="#二、Hadoop安装" class="headerlink" title="二、Hadoop安装"></a>二、Hadoop安装</h2><h3 id="1-安装及环境变量配置"><a href="#1-安装及环境变量配置" class="headerlink" title="1. 安装及环境变量配置"></a>1. 安装及环境变量配置</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>将hadoop-2.6.0.tar.gz解压到目录/opt<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf hadoop-2.6.0.tar.gz -C /opt # 解压到/opt</span><br><span class="line">cd /opt      # 切到含有hadoop-2.6.0的目录下</span><br><span class="line">sudo chown -R hadoop:hadoop ./hadoop-2.6.0       # 修改文件权限</span><br></pre></td></tr></table></figure></p>
 <h4 id="配置环境变量-1"><a href="#配置环境变量-1" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><p>与java配置环境变量相同，在/etc/profile中追加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export HADOOP_HOME=/opt/hadoop-2.6.0</span><br><span class="line">export HADOOP_LIB_NATIVE=$HADOOP_HOME/lib/native</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/bin</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/sbin</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/lib</span><br></pre></td></tr></table></figure></p>
-<p>保存后退出。通过<code>source</code>命令使得上面的修改生效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo source /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p>保存后退出。通过<code>source</code>命令使得上面的修改生效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure></p>
 <p>输入以下命令测试是否成功配置环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop version</span><br></pre></td></tr></table></figure></p>
 <p><img src="/images/hadoop_v.jpg" alt=""><br>出现以上结果则成功配置。</p>
 <h3 id="2-配置参数"><a href="#2-配置参数" class="headerlink" title="2. 配置参数"></a>2. 配置参数</h3><p>需要对所有的集群节点配置参数，其中大部分文件都是相同的，可以配置一个之后直接复制覆盖相关文件，而比如不同主机java安装路径不同的话，需要复制之后修改hadoop-env.sh和yarn-env.sh的相关参数。<br>hadoop需要配置一些参数才能成功运行，这些配置文件都在<code>/opt/hadoop-2.6.0/etc/hadoop/</code> 目录下。</p>
