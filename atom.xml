@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-17T03:13:53.668Z</updated>
+  <updated>2018-12-05T19:30:37.733Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>error C2589: (: ::右边的非法标记</title>
+    <link href="http://yoursite.com/2018/11/25/error-C2589-%E5%8F%B3%E8%BE%B9%E7%9A%84%E9%9D%9E%E6%B3%95%E6%A0%87%E8%AE%B0/"/>
+    <id>http://yoursite.com/2018/11/25/error-C2589-右边的非法标记/</id>
+    <published>2018-11-25T06:04:36.000Z</published>
+    <updated>2018-12-05T19:30:37.733Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>原文：<a href="https://blog.csdn.net/zhuangshn/article/details/5537499" target="_blank" rel="noopener">https://blog.csdn.net/zhuangshn/article/details/5537499</a> </p></blockquote><h2 id="error-C2589-“-”-“-”右边的非法标记"><a href="#error-C2589-“-”-“-”右边的非法标记" class="headerlink" title="error C2589: “(”: “::”右边的非法标记"></a>error C2589: “(”: “::”右边的非法标记</h2><ol><li><p>错误输出<br> error C2589: “(”: “::”右边的非法标记</p><p> error C2059: 语法错误 : “::”</p></li><li><p>错误代码举例</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num_choices = std::max(1, std::min(26, num_choices));</span><br></pre></td></tr></table></figure></li><li><p>函数模板max   </p><p>注：模板就是实现代码重用机制的一种工具，它可以实现类型参数化，即把类型定义为参数， 从而实现了真正的代码可重用性。模版可以分为两类，一个是函数模版，另外一个是类模版。</p></li><li><p>错误原因</p><p>函数模板max与Visual C++中的全局的宏max冲突。 </p></li><li><p>解决办法</p><p> 第一种办法：设置项目属性，在预定义处理器中添加定义<code>NOMINMAX</code>来禁止使用Vsual C++的min/max宏定义。</p><p> 项目属性   ——&gt; C/C++ ——&gt; 预处理器 ——&gt; 预处理器定义 (此处添加预定义编译开关   NOMINMAX）</p><p> 第二种办法： 加上括号，与Vsual C++的min/max宏定义区分开</p> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">num_choices = (std::max)(1, std::min(26, num_choices));</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;原文：&lt;a href=&quot;https://blog.csdn.net/zhuangshn/article/details/5537499&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/zh
+      
+    
+    </summary>
+    
+      <category term="error" scheme="http://yoursite.com/categories/error/"/>
+    
+    
+      <category term="C++" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cmake find_path(),windows带空格的路径</title>
+    <link href="http://yoursite.com/2018/11/25/cmake-find-path-windows%E5%B8%A6%E7%A9%BA%E6%A0%BC%E7%9A%84%E8%B7%AF%E5%BE%84/"/>
+    <id>http://yoursite.com/2018/11/25/cmake-find-path-windows带空格的路径/</id>
+    <published>2018-11-25T02:54:21.000Z</published>
+    <updated>2018-12-05T19:35:16.277Z</updated>
+    
+    <content type="html"><![CDATA[<p>cmake中的windows 路径如果有空格，比如<code>D:/Program Files/libigl</code>, 需要改成<code>D:/Program\ Files/libigl</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">find_path(LIBIGL_INCLUDE_DIR igl/readOBJ.h</span><br><span class="line">    HINTS</span><br><span class="line">        ENV LIBIGL</span><br><span class="line">        ENV LIBIGLROOT</span><br><span class="line">        ENV LIBIGL_ROOT</span><br><span class="line">        ENV LIBIGL_DIR</span><br><span class="line">    PATHS</span><br><span class="line">        $&#123;CMAKE_SOURCE_DIR&#125;/../..</span><br><span class="line">        $&#123;CMAKE_SOURCE_DIR&#125;/..</span><br><span class="line">        $&#123;CMAKE_SOURCE_DIR&#125;</span><br><span class="line">        $&#123;CMAKE_SOURCE_DIR&#125;/libigl</span><br><span class="line">        $&#123;CMAKE_SOURCE_DIR&#125;/../libigl</span><br><span class="line">        $&#123;CMAKE_SOURCE_DIR&#125;/../../libigl</span><br><span class="line">        D:/Program\ Files/libigl</span><br><span class="line">        /usr</span><br><span class="line">        /usr/local</span><br><span class="line">        /usr/local/igl/libigl</span><br><span class="line">    PATH_SUFFIXES include</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;cmake中的windows 路径如果有空格，比如&lt;code&gt;D:/Program Files/libigl&lt;/code&gt;, 需要改成&lt;code&gt;D:/Program\ Files/libigl&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight plai
+      
+    
+    </summary>
+    
+      <category term="error" scheme="http://yoursite.com/categories/error/"/>
+    
+    
+      <category term="cmake" scheme="http://yoursite.com/tags/cmake/"/>
+    
+  </entry>
   
   <entry>
     <title>hadoop集群搭建</title>
