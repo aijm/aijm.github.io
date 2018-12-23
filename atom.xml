@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-22T18:44:26.648Z</updated>
+  <updated>2018-12-23T11:49:35.214Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cs61c_lab1</title>
+    <link href="http://yoursite.com/2018/12/23/cs61c-lab1/"/>
+    <id>http://yoursite.com/2018/12/23/cs61c-lab1/</id>
+    <published>2018-12-23T02:38:08.000Z</published>
+    <updated>2018-12-23T11:49:35.214Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Exercise-1-Binary-Alphabet"><a href="#Exercise-1-Binary-Alphabet" class="headerlink" title="Exercise 1: Binary Alphabet"></a>Exercise 1: Binary Alphabet</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0  1  1  0  □  ■  ■  □</span><br><span class="line">1  0  0 1  ■  □  □  ■</span><br><span class="line">1  1  1 1    --&gt;  ■  ■  ■  ■</span><br><span class="line">1  0  0 1  ■  □  □  ■</span><br><span class="line">1  0  0 1  ■  □  □  ■</span><br></pre></td></tr></table></figure><p>checkoff:</p><ul><li>What five decimal digits produce the pattern above? What five hexadecimal digits?</li><li>What letter is drawn with 1,1,9,9,6? 0xF8F88?</li><li>What is the hexadecimal representation you would use to spell the letter ‘B’? ‘N’ (you probably won’t want to use 5 hex digits for this one)?<a id="more"></a>answer:</li><li>十进制 6,9,15,9,9; 十六进制 0x6,0x9,0xF,0x9,0x9–&gt;0x69F99</li><li>1,1,9,9,6–&gt;<code>J</code>; 0xF8F88–&gt;<code>F</code></li><li>见图：0xE9E9E–&gt;<code>B</code>;0x9DB90–&gt;<code>N</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">B</span><br><span class="line">■  ■  ■  □</span><br><span class="line">■  □  □  ■</span><br><span class="line">■  ■  ■  □</span><br><span class="line">■  □  □  ■</span><br><span class="line">■  ■  ■  □</span><br><span class="line">N</span><br><span class="line">■  □  □  ■</span><br><span class="line">■  ■  □  ■</span><br><span class="line">■  □  ■  ■</span><br><span class="line">■  □  □  ■</span><br><span class="line">□  □  □  □</span><br></pre></td></tr></table></figure></li></ul><h3 id="Exercise-2-Simple-C-Program"><a href="#Exercise-2-Simple-C-Program" class="headerlink" title="Exercise 2: Simple C Program"></a>Exercise 2: Simple C Program</h3><p>checkoff:</p><ul><li>Explain the changes you made.</li><li>Explain the minimum number of distinct values needed for the preprocessor macros.</li><li>What does the -o flag do with gcc?</li></ul><p>answer:</p><ul><li>V0=3,V1=3,V3=3,V2!=0</li><li>3</li><li><code>gcc -o &lt;file&gt;</code> –&gt; Place the executable output into file</li></ul><h3 id="Exercise-3-Debugger"><a href="#Exercise-3-Debugger" class="headerlink" title="Exercise 3: Debugger"></a>Exercise 3: Debugger</h3><ol><li>How do you pass command line arguments to a program when using gdb?<br><code>run arg1 arg2 ...</code></li><li>How do you set a breakpoint which only occurs when a set of conditions is true (e.g. when certain variables are a certain value)?<br><code>b file:line if &lt;condition&gt;</code></li><li>How do you execute the next line of C code in the program after stopping at a breakpoint?<br><code>next</code></li><li>If the next line of code is a function call, you’ll execute the whole function call at once if you use your answer to #3. (If not, consider a different command for #3!) How do you tell GDB that you want to debug the code inside the function instead? (If you changed your answer to #3, then that answer is most likely now applicable here.)<br><code>step</code></li><li>How do you resume the program after stopping at a breakpoint?<br><code>INTERRUPT or Ctrl+c</code></li><li>How can you see the value of a variable (or even an expression like 1+2) in gdb?<br><code>p &lt;exp&gt;</code></li><li>How do you configure gdb so it prints the value of a variable after every step?<br><code>display &lt;variable&gt;</code></li><li>How do you print a list of all variables and their values in the current function?<br><code>info args, info locals, info variables</code></li><li>How do you exit out of gdb?<br><code>quit</code></li></ol><h3 id="Exercise-4-5-6"><a href="#Exercise-4-5-6" class="headerlink" title="Exercise 4,5,6"></a>Exercise 4,5,6</h3><ol><li>C program requires user input: how to run or gdb without geting stuck?<br>通过重定向方法，重定向输入输出流<code>stdin</code>和<code>stdout</code>为文件，如：<br><code>./a.out &lt; intput.txt &gt; output.txt</code>，对于gdb,则是<code>run &lt; input.txt &gt; output.txt</code></li><li>how to check if a linked list has a cycle? (tortoise and hare)</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Exercise-1-Binary-Alphabet&quot;&gt;&lt;a href=&quot;#Exercise-1-Binary-Alphabet&quot; class=&quot;headerlink&quot; title=&quot;Exercise 1: Binary Alphabet&quot;&gt;&lt;/a&gt;Exercise 1: Binary Alphabet&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;0  1  1  0	 	 □  ■  ■  □&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1  0  0	 1	 	 ■  □  □  ■&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1  1  1	 1	    --&amp;gt;  ■  ■  ■  ■&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1  0  0	 1	 	 ■  □  □  ■&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1  0  0	 1	 	 ■  □  □  ■&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;checkoff:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;What five decimal digits produce the pattern above? What five hexadecimal digits?&lt;/li&gt;
+&lt;li&gt;What letter is drawn with 1,1,9,9,6? 0xF8F88?&lt;/li&gt;
+&lt;li&gt;What is the hexadecimal representation you would use to spell the letter ‘B’? ‘N’ (you probably won’t want to use 5 hex digits for this one)?
+    
+    </summary>
+    
+      <category term="learn" scheme="http://yoursite.com/categories/learn/"/>
+    
+    
+      <category term="cs61c" scheme="http://yoursite.com/tags/cs61c/"/>
+    
+      <category term="gdb" scheme="http://yoursite.com/tags/gdb/"/>
+    
+      <category term="cgdb" scheme="http://yoursite.com/tags/cgdb/"/>
+    
+  </entry>
   
   <entry>
     <title>cs61c_lab0</title>
