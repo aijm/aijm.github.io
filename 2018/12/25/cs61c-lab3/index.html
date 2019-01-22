@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="cs61c,尾递归,RISC-V," />
+  <meta name="keywords" content="RISC-V,cs61c,尾递归," />
 
 
 
@@ -82,7 +82,7 @@
 
 
 <meta name="description" content="link of cs61c_lab3 lab3  lab3_ex1.s1234567891011121314151617181920.data.word 2, 4, 6, 8n: .word 9.textmain:   add     t0, x0, x0        addi    t1, x0, 1        la      t3, n        lw      t3, 0(t3)">
-<meta name="keywords" content="cs61c,尾递归,RISC-V">
+<meta name="keywords" content="RISC-V,cs61c,尾递归">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cs61c_lab3-RISC-V">
 <meta property="og:url" content="http://yoursite.com/2018/12/25/cs61c-lab3/index.html">
@@ -90,7 +90,7 @@
 <meta property="og:description" content="link of cs61c_lab3 lab3  lab3_ex1.s1234567891011121314151617181920.data.word 2, 4, 6, 8n: .word 9.textmain:   add     t0, x0, x0        addi    t1, x0, 1        la      t3, n        lw      t3, 0(t3)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/stack.png">
-<meta property="og:updated_time" content="2018-12-30T17:44:00.769Z">
+<meta property="og:updated_time" content="2019-01-17T17:10:29.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs61c_lab3-RISC-V">
 <meta name="twitter:description" content="link of cs61c_lab3 lab3  lab3_ex1.s1234567891011121314151617181920.data.word 2, 4, 6, 8n: .word 9.textmain:   add     t0, x0, x0        addi    t1, x0, 1        la      t3, n        lw      t3, 0(t3)">
@@ -471,7 +471,7 @@
 <li>参数存入a0,a1,…</li>
 <li>调用时需要保存return address, 需要保存的寄存器的值；存储这些值是因为调用的函数可能会改变这些值。</li>
 <li>上面的值通过栈来保存，就是所谓的调用栈</li>
-<li>通过 <code>jal ra, func</code> 调用函数，这条语句会把ra的值+4,得到下一条指令的地址，同时把pc的值变为函数func的地址</li>
+<li>通过 <code>jal ra, func</code> 调用函数，这条语句会把ra的值设为下一条指令的地址，同时把pc的值变为函数func的地址</li>
 <li>执行函数，通过<code>a0</code>返回值，在最后 <code>jr ra</code>, 会将pc的值变为ra,返回到之前调用处的下一条指令</li>
 <li>函数调用后，从栈中恢复原来保存的值，通过sp增加回收栈空间</li>
 </ul>
@@ -496,11 +496,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/RISC-V/" rel="tag"><i class="fa fa-tag"></i> RISC-V</a>
+          
             <a href="/tags/cs61c/" rel="tag"><i class="fa fa-tag"></i> cs61c</a>
           
             <a href="/tags/尾递归/" rel="tag"><i class="fa fa-tag"></i> 尾递归</a>
-          
-            <a href="/tags/RISC-V/" rel="tag"><i class="fa fa-tag"></i> RISC-V</a>
           
         </div>
       
@@ -637,7 +637,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -729,7 +729,7 @@ var jiathis_config={
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -743,7 +743,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.2k</span>
+    <span title="Site words total count">9.4k</span>
   
 </div>
 
@@ -776,7 +776,7 @@ var jiathis_config={
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">8.2k</span> 字
+      博客全站共： <span class="post-count">9.4k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
