@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="一切都是对象通过引用操作对象1String s = &quot;abc&quot;; 对象”abc”在堆中，s是对其的一个引用。 new创造对象1ArrayList&amp;lt;Integer&amp;gt; list = new ArrayList&amp;lt;Integer&amp;gt;(); 基本数据类型(primitive type)由于基本数据类型经常用到，如果将其变为类，通过new 在堆上分配的话，开销太大，所以java将基本数据">
+<meta name="description" content="一切都是对象通过引用操作对象1String s = &quot;abc&quot;; 对象”abc”在堆中，s是对其的一个引用。 new创造对象1ArrayList&amp;lt;Integer&amp;gt; list = new ArrayList&amp;lt;Integer&amp;gt;();">
 <meta name="keywords" content="java编程思想">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java编程思想笔记(二)、(三)：对象和操作符">
 <meta property="og:url" content="http://yoursite.com/2019/03/07/java编程思想笔记-二-：一切都是对象/index.html">
 <meta property="og:site_name" content="羽觞的博客">
-<meta property="og:description" content="一切都是对象通过引用操作对象1String s = &quot;abc&quot;; 对象”abc”在堆中，s是对其的一个引用。 new创造对象1ArrayList&amp;lt;Integer&amp;gt; list = new ArrayList&amp;lt;Integer&amp;gt;(); 基本数据类型(primitive type)由于基本数据类型经常用到，如果将其变为类，通过new 在堆上分配的话，开销太大，所以java将基本数据">
+<meta property="og:description" content="一切都是对象通过引用操作对象1String s = &quot;abc&quot;; 对象”abc”在堆中，s是对其的一个引用。 new创造对象1ArrayList&amp;lt;Integer&amp;gt; list = new ArrayList&amp;lt;Integer&amp;gt;();">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/03/07/images/java2_1.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/07/images/java2_2.png">
-<meta property="og:updated_time" content="2019-03-07T14:12:53.441Z">
+<meta property="og:updated_time" content="2019-05-03T08:57:30.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java编程思想笔记(二)、(三)：对象和操作符">
-<meta name="twitter:description" content="一切都是对象通过引用操作对象1String s = &quot;abc&quot;; 对象”abc”在堆中，s是对其的一个引用。 new创造对象1ArrayList&amp;lt;Integer&amp;gt; list = new ArrayList&amp;lt;Integer&amp;gt;(); 基本数据类型(primitive type)由于基本数据类型经常用到，如果将其变为类，通过new 在堆上分配的话，开销太大，所以java将基本数据">
+<meta name="twitter:description" content="一切都是对象通过引用操作对象1String s = &quot;abc&quot;; 对象”abc”在堆中，s是对其的一个引用。 new创造对象1ArrayList&amp;lt;Integer&amp;gt; list = new ArrayList&amp;lt;Integer&amp;gt;();">
 <meta name="twitter:image" content="http://yoursite.com/2019/03/07/images/java2_1.png">
 
 
@@ -426,6 +426,7 @@
         <h1 id="一切都是对象"><a href="#一切都是对象" class="headerlink" title="一切都是对象"></a>一切都是对象</h1><h2 id="通过引用操作对象"><a href="#通过引用操作对象" class="headerlink" title="通过引用操作对象"></a>通过引用操作对象</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"abc"</span>;</span><br></pre></td></tr></table></figure>
 <p>对象”abc”在堆中，s是对其的一个引用。</p>
 <h2 id="new创造对象"><a href="#new创造对象" class="headerlink" title="new创造对象"></a>new创造对象</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="基本数据类型-primitive-type"><a href="#基本数据类型-primitive-type" class="headerlink" title="基本数据类型(primitive type)"></a>基本数据类型(primitive type)</h2><p>由于基本数据类型经常用到，如果将其变为类，通过new 在堆上分配的话，开销太大，所以java将基本数据类型在栈上分配。且与c/c++不同，这些类型的大小固定。<br><img src="../images/java2_1.png" alt=""></p>
 <h2 id="不需要销毁对象"><a href="#不需要销毁对象" class="headerlink" title="不需要销毁对象"></a>不需要销毁对象</h2><h3 id="对象作用域"><a href="#对象作用域" class="headerlink" title="对象作用域"></a>对象作用域</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    String s = <span class="string">"abc"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在上面的语句中，引用s的作用域在{}之间，而对象”abc”在堆上分配，在{}之外仍然存在，知道被垃圾回收器回收之前，一直存在。</p>

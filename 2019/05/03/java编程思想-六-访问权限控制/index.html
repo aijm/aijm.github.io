@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="羽觞的博客">
 <meta property="og:description" content="访问权限控制访问权限控制主要是为了解决类库开发的问题，类库的代码往往需要重构，但是类库的使用者却需要代码保持不变，为此，对于类库中的代码，使用者的访问应该是受限制的，他应该只能访问部分需要公开的代码，比如所谓的API。 因此程序代码需要约定代码的访问权限。在java中，访问权限从大到小为:public, protected, 包访问权限(没有关键词), private. 其中包是库的基本单元。 包">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-03T06:27:43.608Z">
+<meta property="og:updated_time" content="2019-05-03T08:58:10.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java编程思想(六): 访问权限控制">
 <meta name="twitter:description" content="访问权限控制访问权限控制主要是为了解决类库开发的问题，类库的代码往往需要重构，但是类库的使用者却需要代码保持不变，为此，对于类库中的代码，使用者的访问应该是受限制的，他应该只能访问部分需要公开的代码，比如所谓的API。 因此程序代码需要约定代码的访问权限。在java中，访问权限从大到小为:public, protected, 包访问权限(没有关键词), private. 其中包是库的基本单元。 包">
@@ -424,6 +424,7 @@
 <p>因此程序代码需要约定代码的访问权限。在java中，访问权限从大到小为:public, protected, 包访问权限(没有关键词), private. 其中包是库的基本单元。</p>
 <h2 id="包-库单元"><a href="#包-库单元" class="headerlink" title="包:库单元"></a>包:库单元</h2><p>包是通过名字空间组织的一组类。</p>
 <p>通过包可以很方便的把实现某一功能的类组织起来，在类文件(.java)中通过 <code>package package_name</code> 指定类所在的包，通过<code>import</code> 来导入。比如<code>import java.util.ArrayList</code> 导入<code>java.util</code>包下的<code>ArrayList</code>类。</p>
+<a id="more"></a>
 <h3 id="代码组织"><a href="#代码组织" class="headerlink" title="代码组织"></a>代码组织</h3><p>编译一个.java文件时，生成一个同名的.class文件，其中.java文件必须保证只有一个public的类和任意数量的非public类。</p>
 <ol>
 <li><p>通过package指定所在的包</p>
