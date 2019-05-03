@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="final 关键字初始化和类的加载">
+<meta name="description" content="1. final 关键字final关键字主要的含义就是“无法改变”。final可以用于数据、方法和类。 1. 数据final作用于数据上表示数据本身不可以改变。12345678final int a = 10;a = 11; // 错误 static final int C = 2; // 编译期常量final List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;">
 <meta name="keywords" content="java编程思想">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java编程思想(七): 复用类">
 <meta property="og:url" content="http://yoursite.com/2019/05/03/java编程思想-七-复用类/index.html">
 <meta property="og:site_name" content="羽觞的博客">
-<meta property="og:description" content="final 关键字初始化和类的加载">
+<meta property="og:description" content="1. final 关键字final关键字主要的含义就是“无法改变”。final可以用于数据、方法和类。 1. 数据final作用于数据上表示数据本身不可以改变。12345678final int a = 10;a = 11; // 错误 static final int C = 2; // 编译期常量final List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-03T08:43:13.926Z">
+<meta property="og:updated_time" content="2019-05-03T13:22:54.902Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java编程思想(七): 复用类">
-<meta name="twitter:description" content="final 关键字初始化和类的加载">
+<meta name="twitter:description" content="1. final 关键字final关键字主要的含义就是“无法改变”。final可以用于数据、方法和类。 1. 数据final作用于数据上表示数据本身不可以改变。12345678final int a = 10;a = 11; // 错误 static final int C = 2; // 编译期常量final List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;">
 
 
 
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  12
+                  734
                 </span>
               
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -420,7 +420,35 @@
       
 
       
-        <h2 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h2><h2 id="初始化和类的加载"><a href="#初始化和类的加载" class="headerlink" title="初始化和类的加载"></a>初始化和类的加载</h2>
+        <h2 id="1-final-关键字"><a href="#1-final-关键字" class="headerlink" title="1. final 关键字"></a>1. final 关键字</h2><p>final关键字主要的含义就是“无法改变”。final可以用于数据、方法和类。</p>
+<h3 id="1-数据"><a href="#1-数据" class="headerlink" title="1. 数据"></a>1. 数据</h3><p>final作用于数据上表示数据本身不可以改变。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line">a = <span class="number">11</span>; <span class="comment">// 错误 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> C = <span class="number">2</span>; <span class="comment">// 编译期常量</span></span><br><span class="line"><span class="keyword">final</span> List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">list.add(<span class="string">"a"</span>); <span class="comment">// 正确</span></span><br><span class="line">list.add(<span class="string">"b"</span>); <span class="comment">// 正确</span></span><br><span class="line">list = <span class="keyword">new</span> ArrayList&lt;String&gt;(); <span class="comment">// 错误，list不能指向其他对象</span></span><br></pre></td></tr></table></figure></p>
+<p>如上，final作用于引用表示引用值本身不能变，即不能指向其他对象。</p>
+<h4 id="final修饰参数"><a href="#final修饰参数" class="headerlink" title="final修饰参数"></a>final修饰参数</h4><p>在方法体的匿名内部类中，参数需要用final修饰。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">adder</span></span>&#123;<span class="function"><span class="keyword">void</span> <span class="title">addXYZ</span><span class="params">()</span></span>;&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">outer</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> adder <span class="title">getAdder</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> y = <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> adder()&#123;</span><br><span class="line">            <span class="keyword">int</span> z = <span class="number">10</span>;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">void</span> <span class="title">addXYZ</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> x + y + z;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>因为方法体中的变量是分配在栈上的，生命周期只在方法体内，而内部类对象分配在堆上。如果内部类如果保存外部类的引用，会导致错误。所以为了解决这个问题，java内部会拷贝外部变量。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">adder</span></span>&#123;<span class="function"><span class="keyword">void</span> <span class="title">addXYZ</span><span class="params">()</span></span>;&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">outer</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> adder <span class="title">getAdder</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> y = <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> adder()&#123;</span><br><span class="line">            <span class="keyword">int</span> copyx = x; <span class="comment">// java隐式拷贝</span></span><br><span class="line">            <span class="keyword">int</span> copyy = y; <span class="comment">// java隐式拷贝</span></span><br><span class="line">            <span class="keyword">int</span> z = <span class="number">10</span>;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">void</span> <span class="title">addXYZ</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> copyx + copyy + z;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了让内外含义保持一致，方法体内的局部变量<code>x,y</code>需要用final修饰。</p>
+<blockquote>
+<p>引申：为什么java不能实现和其他语言一样的函数闭包呢？</p>
+</blockquote>
+<h3 id="2-方法"><a href="#2-方法" class="headerlink" title="2. 方法"></a>2. 方法</h3><p>final作用于方法有两个方面。</p>
+<ol>
+<li>不能在继承类中重写覆盖</li>
+<li>内联调用</li>
+</ol>
+<p>内联调用是为了减少函数调用的开销(压栈、跳转、出栈等)，在调用的地方直接用函数代码代替。不过当方法很大时，程序代码会膨胀，性能没有提高。</p>
+<p>现在很多虚拟机会检测这种情况，进行优化。所以final主要是为了禁止继承类覆盖。</p>
+<h3 id="3-类"><a href="#3-类" class="headerlink" title="3. 类"></a>3. 类</h3><p>final 类不能被继承。</p>
+<h2 id="2-初始化和类的加载"><a href="#2-初始化和类的加载" class="headerlink" title="2. 初始化和类的加载"></a>2. 初始化和类的加载</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"Animal: 非静态初始化"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"Animal: 静态初始化"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Animal() &#123;</span><br><span class="line">        System.out.println(<span class="string">"Animal: Constructor"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"Dog: 非静态初始化"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"Dog: 静态初始化"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Dog() &#123;</span><br><span class="line">        System.out.println(<span class="string">"Dog: Constructor"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DogConstructor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Dog();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;<span class="comment">/* output:</span></span><br><span class="line"><span class="comment">Animal: 静态初始化</span></span><br><span class="line"><span class="comment">Dog: 静态初始化</span></span><br><span class="line"><span class="comment">Animal: 非静态初始化</span></span><br><span class="line"><span class="comment">Animal: Constructor</span></span><br><span class="line"><span class="comment">Dog: 非静态初始化</span></span><br><span class="line"><span class="comment">Dog: Constructor</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>如上例所示，步骤如下：</p>
+<ol>
+<li>new Dog()触发加载Dog类时，发现继承了基类Animal，于是继续加载基类Animal</li>
+<li>基类静态初始化，进而子类Dog静态初始化</li>
+<li>在堆上分配内存，清空为0(默认初始化)</li>
+<li>基类执行定义初始化和构造器</li>
+<li>子类执行定义初始化和构造器</li>
+</ol>
+
       
     </div>
     
@@ -459,6 +487,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/03/java编程思想-十-内部类/" rel="prev" title="java编程思想(十): 内部类">
+                java编程思想(十): 内部类 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -570,7 +602,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -642,7 +674,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#final-关键字"><span class="nav-text">final 关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化和类的加载"><span class="nav-text">初始化和类的加载</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-final-关键字"><span class="nav-text">1. final 关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-数据"><span class="nav-text">1. 数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#final修饰参数"><span class="nav-text">final修饰参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-方法"><span class="nav-text">2. 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-类"><span class="nav-text">3. 类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-初始化和类的加载"><span class="nav-text">2. 初始化和类的加载</span></a></li></ol></div>
             
 
           </div>
@@ -676,7 +708,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.6k</span>
+    <span title="Site words total count">10.1k</span>
   
 </div>
 
@@ -709,7 +741,7 @@ var jiathis_config={
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">8.6k</span> 字
+      博客全站共： <span class="post-count">10.1k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->

@@ -81,15 +81,18 @@
 
 
 
+<meta name="description" content="接口接口和内部类提供了很好的接口与实现分离的方法。 完全解耦在多态中，一个方法操作的是类，那么你可以使用这个类及其子类，代码会有很好的复用性。但是对于不在这个继承结构中的某个类，就没有办法了。 而接口却可以放宽这种限制。 多重继承多重继承实际上就是组合多个类的接口。12// B为抽象类或基类，C1,...为接口class A extends B implements C1, C2, C3 ...">
 <meta name="keywords" content="java编程思想">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java编程思想(九): 接口">
 <meta property="og:url" content="http://yoursite.com/2019/04/11/java编程思想-九-接口/index.html">
 <meta property="og:site_name" content="羽觞的博客">
+<meta property="og:description" content="接口接口和内部类提供了很好的接口与实现分离的方法。 完全解耦在多态中，一个方法操作的是类，那么你可以使用这个类及其子类，代码会有很好的复用性。但是对于不在这个继承结构中的某个类，就没有办法了。 而接口却可以放宽这种限制。 多重继承多重继承实际上就是组合多个类的接口。12// B为抽象类或基类，C1,...为接口class A extends B implements C1, C2, C3 ...">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-03T08:43:39.400Z">
+<meta property="og:updated_time" content="2019-05-03T15:39:03.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java编程思想(九): 接口">
+<meta name="twitter:description" content="接口接口和内部类提供了很好的接口与实现分离的方法。 完全解耦在多态中，一个方法操作的是类，那么你可以使用这个类及其子类，代码会有很好的复用性。但是对于不在这个继承结构中的某个类，就没有办法了。 而接口却可以放宽这种限制。 多重继承多重继承实际上就是组合多个类的接口。12// B为抽象类或基类，C1,...为接口class A extends B implements C1, C2, C3 ...">
 
 
 
@@ -380,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  644
                 </span>
               
 
@@ -396,7 +399,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -417,7 +420,17 @@
       
 
       
-        
+        <h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p><strong>接口和内部类</strong>提供了很好的接口与实现分离的方法。</p>
+<h2 id="完全解耦"><a href="#完全解耦" class="headerlink" title="完全解耦"></a>完全解耦</h2><p>在多态中，一个方法操作的是类，那么你可以使用这个类及其子类，代码会有很好的复用性。但是对于不在这个继承结构中的某个类，就没有办法了。</p>
+<p>而接口却可以放宽这种限制。</p>
+<h2 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h2><p>多重继承实际上就是组合多个类的接口。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// B为抽象类或基类，C1,...为接口</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">B</span> <span class="keyword">implements</span> <span class="title">C1</span>, <span class="title">C2</span>, <span class="title">C3</span> ...</span></span><br></pre></td></tr></table></figure></p>
+<p>则如上A可以向上转型为B, C1, C2 …, 因此可以很方便的复用代码</p>
+<h2 id="适配接口"><a href="#适配接口" class="headerlink" title="适配接口"></a>适配接口</h2><p>接口最大的用处就是一个接口可以有很多不同的实现。于是如果一个方法以一个接口类型为参数，则使用者可以通过改变接口的实现方式和传入的对象，来产生不同的行为。</p>
+<p>比如Java中的Scanner类，它的构造器接收的是一个Readable接口。如果创建了一个新的类，想让Scanner作用于它，只需实现Readable接口。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: interfaces/RandomWords.java</span></span><br><span class="line"><span class="comment">// Implementing an interface to conform to a method.</span></span><br><span class="line"><span class="keyword">import</span> java.nio.*;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RandomWords</span> <span class="keyword">implements</span> <span class="title">Readable</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Random rand = <span class="keyword">new</span> Random(<span class="number">47</span>);</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">char</span>[] capitals =</span><br><span class="line">    <span class="string">"ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span>.toCharArray();</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">char</span>[] lowers =</span><br><span class="line">    <span class="string">"abcdefghijklmnopqrstuvwxyz"</span>.toCharArray();</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">char</span>[] vowels =</span><br><span class="line">    <span class="string">"aeiou"</span>.toCharArray();</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">RandomWords</span><span class="params">(<span class="keyword">int</span> count)</span> </span>&#123; <span class="keyword">this</span>.count = count; &#125;	</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">(CharBuffer cb)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(count-- == <span class="number">0</span>)</span><br><span class="line">      <span class="keyword">return</span> -<span class="number">1</span>; <span class="comment">// Indicates end of input</span></span><br><span class="line">    cb.append(capitals[rand.nextInt(capitals.length)]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">      cb.append(vowels[rand.nextInt(vowels.length)]);</span><br><span class="line">      cb.append(lowers[rand.nextInt(lowers.length)]);</span><br><span class="line">    &#125;</span><br><span class="line">    cb.append(<span class="string">" "</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">10</span>; <span class="comment">// Number of characters appended</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Scanner s = <span class="keyword">new</span> Scanner(<span class="keyword">new</span> RandomWords(<span class="number">10</span>));</span><br><span class="line">    <span class="keyword">while</span>(s.hasNext())</span><br><span class="line">      System.out.println(s.next());</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">Yazeruyac</span></span><br><span class="line"><span class="comment">Fowenucor</span></span><br><span class="line"><span class="comment">Goeazimom</span></span><br><span class="line"><span class="comment">Raeuuacio</span></span><br><span class="line"><span class="comment">Nuoadesiw</span></span><br><span class="line"><span class="comment">Hageaikux</span></span><br><span class="line"><span class="comment">Ruqicibui</span></span><br><span class="line"><span class="comment">Numasetih</span></span><br><span class="line"><span class="comment">Kuuuuozog</span></span><br><span class="line"><span class="comment">Waqizeyoy</span></span><br><span class="line"><span class="comment">*/</span><span class="comment">//:~</span></span><br></pre></td></tr></table></figure></p>
+<p>如果某个类没有实现Readable接口，那应该怎么办呢？只需extends,并实现Readable接口即可。其实就是一个适配器，适配Readable接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: interfaces/RandomDoubles.java</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RandomDoubles</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Random rand = <span class="keyword">new</span> Random(<span class="number">47</span>);</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">next</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> rand.nextDouble(); &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    RandomDoubles rd = <span class="keyword">new</span> RandomDoubles();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">7</span>; i ++)</span><br><span class="line">      System.out.print(rd.next() + <span class="string">" "</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">0.7271157860730044 0.5309454508634242 0.16020656493302599 0.18847866977771732 0.5166020801268457 0.2678662084200585 0.2613610344283964</span></span><br><span class="line"><span class="comment">*/</span><span class="comment">//:~</span></span><br></pre></td></tr></table></figure>
+<p>为RandomDouble 适配Readable接口<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: interfaces/AdaptedRandomDoubles.java</span></span><br><span class="line"><span class="comment">// Creating an adapter with inheritance.</span></span><br><span class="line"><span class="keyword">import</span> java.nio.*;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdaptedRandomDoubles</span> <span class="keyword">extends</span> <span class="title">RandomDoubles</span></span></span><br><span class="line"><span class="class"><span class="keyword">implements</span> <span class="title">Readable</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">AdaptedRandomDoubles</span><span class="params">(<span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.count = count;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">(CharBuffer cb)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(count-- == <span class="number">0</span>)</span><br><span class="line">      <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    String result = Double.toString(next()) + <span class="string">" "</span>;</span><br><span class="line">    cb.append(result);</span><br><span class="line">    <span class="keyword">return</span> result.length();</span><br><span class="line">  &#125;	</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Scanner s = <span class="keyword">new</span> Scanner(<span class="keyword">new</span> AdaptedRandomDoubles(<span class="number">7</span>));</span><br><span class="line">    <span class="keyword">while</span>(s.hasNextDouble())</span><br><span class="line">      System.out.print(s.nextDouble() + <span class="string">" "</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">0.7271157860730044 0.5309454508634242 0.16020656493302599 0.18847866977771732 0.5166020801268457 0.2678662084200585 0.2613610344283964</span></span><br><span class="line"><span class="comment">*/</span><span class="comment">//:~</span></span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -542,8 +555,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -562,7 +584,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -625,6 +647,22 @@ var jiathis_config={
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#接口"><span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#完全解耦"><span class="nav-text">完全解耦</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多重继承"><span class="nav-text">多重继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适配接口"><span class="nav-text">适配接口</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -652,7 +690,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">8.6k</span>
+    <span title="Site words total count">10.1k</span>
   
 </div>
 
@@ -685,7 +723,7 @@ var jiathis_config={
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">8.6k</span> 字
+      博客全站共： <span class="post-count">10.1k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
